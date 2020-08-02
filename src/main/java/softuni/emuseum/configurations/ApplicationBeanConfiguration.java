@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.time.LocalDateTime;
+
 @Configuration
 public class ApplicationBeanConfiguration {
 
@@ -17,5 +19,6 @@ public class ApplicationBeanConfiguration {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-}
+
+    }
 
