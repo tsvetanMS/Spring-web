@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<th:block th:replace="fragments/head"></th:block>
+
+<body>
+<nav class="fixed-top">
+    <th:block th:include="~{fragments/navbar}"/>
+</nav>
+
+
+<main class="container">
+    <h1 class="text-center">Users</h1>
+    <hr class="hr-3"/>
+
+    <table class="table bg-blur">
+
+        <thead>
+
+        <tr>
+            <th scope="col" class="font-weight-bold">Username</th>
+            <th scope="col" class="font-weight-bold">Email</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody id="users-table">
+        </tbody>
+    </table>
+
+
+</main>
+<th:block th:include="~{fragments/footer}" />
+
+<script>
+
+    const toString = ({ username, email }) => {
+        let columns = `
+    <td>${username}</td>
+    <td>${email}</td>
+    `
+        return `<tr>${columns}</tr>`
+    };
+
+
+    (function show() {
+        fetch('/users/api')
+            .then(response => response.json())
+            .then(users => {
+                let result = '';
+                console.log(users);
+
+                users.forEach(user => {
+                    const userString = toString(user);
+                    result += userString;
+                });
+                document.getElementById('users-table')
+                    .innerHTML=result;
+            });
+    }());
+
+
+</script>
+
+
+
+
+</body>
+<footer>
+    <th:block th:replace="fragments/footer"></th:block>
+</footer>
+</html>

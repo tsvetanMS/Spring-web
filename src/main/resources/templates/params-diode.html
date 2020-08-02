@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<th:block th:replace="fragments/head"></th:block>
+
+<body>
+<nav class="fixed-top">
+    <th:block th:include="~{fragments/navbar}"/>
+</nav>
+
+
+<main class="container">
+    <h1 class="text-center">Diode Parameters</h1>
+    <hr class="hr-3"/>
+
+    <table class="table bg-blur">
+
+        <thead>
+
+        <tr>
+            <th scope="col" class="font-weight-bold">Type</th>
+            <th scope="col" class="font-weight-bold">Max Voltage</th>
+            <th scope="col" class="font-weight-bold">Max Current</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody id="diodes-table">
+        </tbody>
+    </table>
+
+
+    <a href="/all-diodes"  class="btn-rounded btn btn-info w-25">Back</a>
+
+</main>
+<th:block th:include="~{fragments/footer}" />
+
+
+<script>
+
+    let id = [[${diodeID}]]
+
+    const toString = ({ type, maxVoltage, maxCurrent }) => {
+        let columns = `
+    <td>${type}</td>
+    <td>${maxVoltage}</td>
+    <td>${maxCurrent}</td>
+     `
+        return `<tr>${columns}</tr>`
+    };
+
+
+    (function show() {
+        fetch(`/fetch/diode/${id}`)
+            .then(response => response.json())
+            .then(params => {
+
+                const paramString = toString(params);
+
+                document.getElementById('diodes-table')
+                    .innerHTML = paramString;
+            });
+    }());
+
+
+</script>
+
+
+
+
+</body>
+<footer>
+    <th:block th:replace="fragments/footer"></th:block>
+</footer>
+</html>

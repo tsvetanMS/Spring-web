@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="fragments/head"></th:block>
+<body>
+<nav class="fixed-top">
+    <th:block th:replace="fragments/navbar"></th:block>
+</nav>
+
+<main class="mt-3">
+
+    <div class="container-fluid">
+        <div  sec:authorize="isAuthenticated()">
+
+                    <div class="rounded float-left jumbotron">
+                        <a th:href="@{/all-transistors}">
+                            <img src="/img/transistors/1189221.jpg" alt="Transistors" height="240" width="320"/>
+                        </a>
+                        <a th:href="@{/all-resistors}">
+                            <img src="/img/resistors/9774116.jpg" alt="Resistors" height="240" width="320"/>
+                        </a>
+                    </div>
+
+
+                    <div class="rounded float-right jumbotron">
+                        <a th:href="@{/all-capacitors}">
+                            <img src="/img/capacitors/2068458.jpg" alt="Capacitors" height="240" width="320"/>
+                        </a>
+                        <a th:href="@{/all-diodes}">
+                            <img src="/img/diodes/20226.jpg" alt="Diodes" height="240" width="320"/>
+                        </a>
+                    </div>
+
+
+
+                <div class="rounded float-left jumbotron">
+                    <a th:href="@{/under-construction}">
+                        <img src="/img/icircuits/1620708.jpg" alt="Integrated Circuits" height="240" width="320"/>
+                    </a>
+                    <a th:href="@{/under-construction}">
+                        <img src="/img/lamps/6308094.jpg" alt="Electronic Lamps" height="240" width="320"/>
+                    </a>
+                </div>
+
+               <div class="rounded float-right jumbotron">
+                    <a th:href="@{/under-construction}">
+                        <img src="/img/quartz/5864001.jpg" alt="Quartz Resonators" height="240" width="320"/>
+                    </a>
+                    <a th:href="@{/under-construction}">
+                        <img src="/img/electromechanical/3662489.jpg" alt="Relays" height="240" width="320"/>
+                    </a>
+                </div>
+
+
+
+
+        </div>
+
+        <div sec:authorize="isAnonymous()" class="jumbotron">
+
+            <img src="/img/index/background5598.jpg" alt="oscilloscope" height=50% width=100%/>
+
+        </div>
+    </div>
+
+</main>
+<footer>
+
+</footer>
+    <th:block th:replace="fragments/footer"></th:block>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="fragments/head"></th:block>
+<body>
+<nav class="fixed-top">
+    <th:block th:replace="fragments/navbar"></th:block>
+</nav>
+<div class="container-fluid">
+    <hr style="height: 2px;" class="bg-info w-50 mt-5">
+    <main class="mt-5">
+        <h1 class="text-center text-info">Edit Capacitor Parameters</h1>
+        <hr style="height: 2px;" class="bg-info w-50">
+
+        <form th:object="${capacitorBindingModel}" class="form w-50 mx-auto" th:action="@{/capacitors/edit/{id}(id=*{id})}" th:method="POST">
+            <div class="pictureID-and-type-holder d-flex justify-content-between">
+                <div class="form-group">
+                    <label for="pictureID">Picture ID</label>
+                    <input th:field="*{pictureID}" type="text" class="form-control form-input-rounded" id="pictureID" placeholder="Picture ID..." name="pictureID">
+                    <small th:each = "e : ${#fields.errors('pictureID')}" th:text = "${e}" class="text-danger"> Name error</small>
+                </div>
+                <div class="form-group">
+                    <label for="text">Type</label>
+                    <input th:field="*{type}" type="text" class="form-control form-input-rounded" id="type"  placeholder="Type..." name="type">
+                    <small th:each = "e : ${#fields.errors('type')}" th:text = "${e}" class="text-danger"> Name error</small>
+                </div>
+            </div>
+            <div class="capacitance-and-maxVoltage-holder d-flex justify-content-between">
+                <div class="form-group">
+                    <label for="capacitance">Capacitance</label>
+                    <input th:field="*{capacitance}" type="text" class="form-control form-input-rounded" id="capacitance" placeholder="Capacitance..." name="capacitance">
+                    <small th:each = "e : ${#fields.errors('capacitance')}" th:text = "${e}" class="text-danger"> Name error</small>
+                </div>
+                <div class="form-group">
+                <label for="maxVoltage">Max Voltage</label>
+                <input th:field="*{maxVoltage}" type="text" class="form-control form-input-rounded" id="maxVoltage"  placeholder="Max Voltage..." name="maxVoltage">
+                    <small th:each = "e : ${#fields.errors('maxVoltage')}" th:text = "${e}" class="text-danger"> Name error</small>
+                </div>
+
+            </div>
+            <div class="description-holder d-flex justify-content-between">
+                <div class="form-group">
+                    <label for="text">Description</label>
+                    <input size= 100 th:field="*{description}" type="text" class="form-control form-input-rounded" id="text" placeholder="Description..." name="description">
+                    <small th:each = "e : ${#fields.errors('description')}" th:text = "${e}" class="text-danger"> Name error</small>
+                </div>
+
+            </div>
+
+            <hr style="height: 2px;" class="bg-info">
+            <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="btn-rounded btn btn-info w-25">Send changes</button>
+            </div>
+        </form>
+    </main>
+
+
+</div>
+</body>
+<footer>
+    <th:block th:replace="fragments/footer"></th:block>
+</footer>
+
+</html>

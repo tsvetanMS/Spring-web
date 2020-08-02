@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<th:block th:replace="fragments/head"></th:block>
+
+<body>
+<nav class="fixed-top">
+    <th:block th:include="~{fragments/navbar}"/>
+</nav>
+
+
+<main class="container">
+    <h1 class="text-center">Resistor Parameters</h1>
+    <hr class="hr-3"/>
+
+    <table class="table bg-blur">
+
+        <thead>
+
+        <tr>
+            <th scope="col" class="font-weight-bold">Type</th>
+            <th scope="col" class="font-weight-bold">Resistance</th>
+            <th scope="col" class="font-weight-bold">Max Power</th>
+            <th scope="col" class="font-weight-bold">Precision</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody id="resistor-table">
+        </tbody>
+    </table>
+
+
+    <a href="/all-resistors"  class="btn-rounded btn btn-info w-25">Back</a>
+
+</main>
+<th:block th:include="~{fragments/footer}" />
+
+
+<script>
+
+    let id = [[${resistorID}]]
+
+    const toString = ({ type, resistance, maxPower, precision }) => {
+        let columns = `
+    <td>${type}</td>
+    <td>${resistance}</td>
+    <td>${maxPower}</td>
+    <td>${precision}</td>
+    `
+        return `<tr>${columns}</tr>`
+    };
+
+
+    (function show() {
+        fetch(`/fetch/resistor/${id}`)
+            .then(response => response.json())
+            .then(params => {
+
+                const paramString = toString(params);
+
+                document.getElementById('resistor-table')
+                    .innerHTML = paramString;
+            });
+    }());
+
+
+</script>
+
+
+
+
+</body>
+<footer>
+    <th:block th:replace="fragments/footer"></th:block>
+</footer>
+</html>

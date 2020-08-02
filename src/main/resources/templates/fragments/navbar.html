@@ -1,0 +1,14 @@
+<th:block th:fragment="navbar" xmlns:th="http://www.w3.org/1999/xhtml">
+
+        <th:block sec:authorize="isAnonymous()">
+            <th:block th:replace="fragments/nav-anonymous"></th:block>
+        </th:block>
+        <th:block sec:authorize="isAuthenticated()">
+            <th:block th:replace="fragments/nav-authenticated"></th:block>
+        </th:block>
+
+</th:block>
+
+
+
+

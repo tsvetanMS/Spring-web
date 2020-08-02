@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="fragments/head"></th:block>
+<body>
+<nav class="fixed-top">
+    <th:block th:replace="fragments/navbar"></th:block>
+</nav>
+
+<main class="mt-5">
+    <hr style="height: 2px;" class="bg-info mt-5">
+    <div class="container-fluid">
+        <div class="border border-dark p-3 mb-4 jumbotron">
+
+            <div>
+                <h5>This site is intended for all who are interested in what elements are built electronic devices in the past.</h5>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+</body>
+<footer>
+    <th:block th:replace="fragments/footer"></th:block>
+</footer>
+</html>
