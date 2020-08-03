@@ -1,7 +1,7 @@
 <th:block th:fragment="navbar" xmlns:th="http://www.w3.org/1999/xhtml">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-info rounded">
-        <a class="navbar-brand" href="#">Electronics Museum</a>
+        <a class="navbar-brand" href="#">Administration Console</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -15,16 +15,33 @@
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/index}">Home</a>
+                    <a class="nav-link" th:href="@{/index}">Back to Home</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/about}">About</a>
-                </li>
+
 
                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                     <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/admin}">Administration Console</a>
+                        <a class="nav-link" th:href="@{/transistors/add}">Add Transistor</a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/resistors/add}">Add Resistor</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/capacitors/add}">Add Capacitor</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/diodes/add}">Add Diode</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/users/all}">Users Accounts</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/pages/all}">Pages Stats</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/users/all}">Users Stats</a>
+                    </li>
+
                 </th:block>
 
 

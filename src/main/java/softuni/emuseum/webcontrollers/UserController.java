@@ -78,12 +78,7 @@ public class UserController {
 
         return "about";
     }
-    @GetMapping("/admin")
-    // @PreAuthorize("isAnonymous()")
-    public String admin() {
 
-        return "admin";
-    }
 
 //----------------------------------------------------------------------------------------------------------------------
 

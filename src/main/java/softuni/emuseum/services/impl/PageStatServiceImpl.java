@@ -2,6 +2,7 @@ package softuni.emuseum.services.impl;
 
 import org.springframework.stereotype.Service;
 import softuni.emuseum.entities.PageStat;
+import softuni.emuseum.errorhandling.errors.PageStatNotFoundException;
 import softuni.emuseum.repositories.PageStatRepository;
 import softuni.emuseum.services.api.PageStatService;
 
@@ -24,7 +25,7 @@ public class PageStatServiceImpl implements PageStatService {
         PageStat pageStat = this.pageStatRepository.findByRoute(pageRoute).orElse(null);
 
         if(pageStat == null){
-           return 0L;
+            throw new PageStatNotFoundException("Page stat database is empty!");
         } else {
             return pageStat.getVisits();
         }
