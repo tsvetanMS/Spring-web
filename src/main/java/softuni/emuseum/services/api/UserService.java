@@ -15,8 +15,15 @@ public interface UserService extends UserDetailsService {
 
     UserServiceModel findUserByUsername(String username);
 
-    List<User> findAllUsers();
+    List<UserServiceModel> findAllUsers();
 
     Set<String> findUserRolesByUsername(String username);
+
+    void promoteUserToAdmin(Long userId);
+
+    void deleteUser(Long userId);
+
+    UserServiceModel findUserById(Long id);
+
 
 }

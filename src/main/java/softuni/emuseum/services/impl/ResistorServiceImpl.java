@@ -25,7 +25,7 @@ public class ResistorServiceImpl implements ResistorService {
 
     @Override
     public void loadResistorInDatabase(Resistor resistor) {
-        if(this.resistorRepository.count() < 10) {
+        if(this.resistorRepository.count() == 0) {
             this.resistorRepository.save(resistor);
         }
     }

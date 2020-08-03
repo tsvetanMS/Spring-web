@@ -28,7 +28,7 @@ public class CapacitorServiceImpl implements CapacitorService {
 
     @Override
     public void loadCapacitorInDatabase(Capacitor capacitor) {
-        if(this.capacitorRepository.count() < 10) {
+        if(this.capacitorRepository.count() == 0) {
             this.capacitorRepository.save(capacitor);
         }
     }

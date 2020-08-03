@@ -3,7 +3,8 @@ package softuni.emuseum.models.responce;
 public class UserResponseModel {
 
     private String username;
-    private String email;
+    private String route;
+    private String dateTime;
 
     public UserResponseModel() {
     }
@@ -16,12 +17,19 @@ public class UserResponseModel {
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
+    public String getRoute() {
+        return route;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setRoute(String route) {
+        this.route = route;
     }
 
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
 }

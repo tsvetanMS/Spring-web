@@ -25,7 +25,7 @@ public class TransistorServiceImpl implements TransistorService {
 //----------------------------------------------------------------------------------------------------------------------
     @Override
     public void loadTransistorInDatabase(Transistor transistor) {
-        if(this.transistorRepository.count() < 10) {
+        if(this.transistorRepository.count() == 0) {
             this.transistorRepository.save(transistor);
         }
 

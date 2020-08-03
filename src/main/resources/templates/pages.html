@@ -13,7 +13,7 @@
 
 
 <main class="container">
-    <h1 class="text-center">Users Visits</h1>
+    <h1 class="text-center">Pages</h1>
     <hr class="hr-3"/>
 
     <table class="table bg-blur">
@@ -21,15 +21,15 @@
         <thead>
 
         <tr>
-            <th scope="col" class="font-weight-bold">Username</th>
             <th scope="col" class="font-weight-bold">Route</th>
-            <th scope="col" class="font-weight-bold">Date Time</th>
+            <th scope="col" class="font-weight-bold">Visits</th>
+            <th scope="col" class="font-weight-bold">Last Visit</th>
 
         </tr>
 
         </thead>
 
-        <tbody id="users-table">
+        <tbody id="pages-table">
         </tbody>
     </table>
 
@@ -39,28 +39,28 @@
 
 <script>
 
-    const toString = ({ username, route, dateTime }) => {
+    const toString = ({ route, visits, lastVisit }) => {
         let columns = `
-    <td>${username}</td>
     <td>${route}</td>
-    <td>${dateTime}</td>
+    <td>${visits}</td>
+    <td>${lastVisit}</td>
     `
         return `<tr>${columns}</tr>`
     };
 
 
     (function show() {
-        fetch('/fetch/users')
+        fetch('/pages/api')
             .then(response => response.json())
-            .then(users => {
+            .then(pages => {
                 let result = '';
-                //console.log(users);
+                //console.log(pages);
 
-                users.forEach(user => {
-                    const userString = toString(user);
-                    result += userString;
+                pages.forEach(page => {
+                    const pageString = toString(page);
+                    result += pageString;
                 });
-                document.getElementById('users-table')
+                document.getElementById('pages-table')
                     .innerHTML = result;
             });
     }());

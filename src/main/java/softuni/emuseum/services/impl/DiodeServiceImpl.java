@@ -29,7 +29,7 @@ public class DiodeServiceImpl implements DiodeService {
 
     @Override
     public void loadDiodeInDatabase(Diode diode) {
-        if(this.diodeRepository.count() < 10) {
+        if(this.diodeRepository.count() == 0) {
             this.diodeRepository.save(diode);
         }
     }

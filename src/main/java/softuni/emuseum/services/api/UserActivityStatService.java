@@ -12,5 +12,6 @@ public interface UserActivityStatService {
 
     void cleanOldRecords();
 
-    List<UserActivityServiceModel> findUserActivity(String username);
+    List<UserActivityServiceModel> findAllUsersActivity();
+
 }

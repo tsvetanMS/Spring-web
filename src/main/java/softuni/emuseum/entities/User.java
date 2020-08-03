@@ -54,6 +54,8 @@ public class User extends BaseEntity implements UserDetails {
         this.email = email;
     }
 //----------------------------------------------------------------------------------------------------------------------
+    // ако дам тук //cascade = CascadeType.ALL немога да трия потребител
+    // защото иска да изтрие и ролите
     @Override
     @ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",

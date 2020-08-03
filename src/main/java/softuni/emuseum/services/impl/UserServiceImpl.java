@@ -71,8 +71,9 @@ public class UserServiceImpl implements UserService {
     }
 //----------------------------------------------------------------------------------------------------------------------
     @Override
-    public List<User> findAllUsers() {
-        return this.userRepository.findAll().stream().collect(Collectors.toList());
+    public List<UserServiceModel> findAllUsers() {
+        return this.userRepository.findAll().stream()
+                .map(user -> this.modelMapper.map(user, UserServiceModel.class)).collect(Collectors.toList());
     }
 //----------------------------------------------------------------------------------------------------------------------
     @Override
@@ -87,4 +88,31 @@ public class UserServiceImpl implements UserService {
         return roles;
     }
 //----------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void promoteUserToAdmin(Long userId) {
+        User user = this.userRepository.findById(userId).orElse(null);
+
+       if(user != null){
+            Role role = this.modelMapper.map(this.roleService.findByAuthority("ROLE_ADMIN"), Role.class);
+            user.getAuthorities().add(role);
+            this.userRepository.saveAndFlush(user);
+        }
+    }
+//----------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void deleteUser(Long userId) {
+        User user = this.userRepository.findById(userId).orElse(null);
+
+        if(user != null){
+           this.userRepository.deleteById(userId);
+        }
+
+    }
+//----------------------------------------------------------------------------------------------------------------------
+    @Override
+    public UserServiceModel findUserById(Long id) {
+        return this.modelMapper.map(this.userRepository.findById(id), UserServiceModel.class);
+    }
+//----------------------------------------------------------------------------------------------------------------------
+
 }

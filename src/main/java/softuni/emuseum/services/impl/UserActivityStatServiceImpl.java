@@ -21,6 +21,7 @@ public class UserActivityStatServiceImpl implements UserActivityStatService {
     private final ModelMapper modelMapper;
 
 
+
     public UserActivityStatServiceImpl(UserActivityRepository userActivityRepository, ModelMapper modelMapper) {
         this.userActivityRepository = userActivityRepository;
 
@@ -50,8 +51,8 @@ public class UserActivityStatServiceImpl implements UserActivityStatService {
     }
 //----------------------------------------------------------------------------------------------------------------------
     @Override
-    public List<UserActivityServiceModel> findUserActivity(String username) {
-        List<UserActivity> userActivities = this.userActivityRepository.findByUsername(username).orElse(null);
+    public List<UserActivityServiceModel> findAllUsersActivity() {
+        List<UserActivity> userActivities = this.userActivityRepository.findAll();
 
         if(userActivities == null){
             throw new UserActivityStatNotFoundException("User activity database is empty!");
