@@ -4,7 +4,7 @@ package softuni.emuseum.interceptors;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import softuni.emuseum.services.api.UserActivityService;
+import softuni.emuseum.services.api.UserActivityStatService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class UserActivityInterceptor extends HandlerInterceptorAdapter {
 
-    private final UserActivityService userActivityService;
+    private final UserActivityStatService userActivityStatService;
 
-    public UserActivityInterceptor(UserActivityService userActivityService) {
-        this.userActivityService = userActivityService;
+    public UserActivityInterceptor(UserActivityStatService userActivityStatService) {
+        this.userActivityStatService = userActivityStatService;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class UserActivityInterceptor extends HandlerInterceptorAdapter {
         username= SecurityContextHolder.getContext().getAuthentication().getName();
         route = request.getRequestURI();
 
-        this.userActivityService.saveActivity(username, route);
+        this.userActivityStatService.saveActivity(username, route);
 
         return true;
     }
