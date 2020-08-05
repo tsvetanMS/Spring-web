@@ -29,7 +29,7 @@ public class Transistor extends BaseEntity{
         this.gain = gain;
     }
 //----------------------------------------------------------------------------------------------------------------------
-    @Column(name="picture_id", length = 33)
+    @Column(name="picture_id", length = 33, nullable = false)
     public String getPictureID() {
         return pictureID;
     }

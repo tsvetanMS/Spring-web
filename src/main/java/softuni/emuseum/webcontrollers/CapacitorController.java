@@ -69,7 +69,7 @@ public class CapacitorController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    //----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
     @GetMapping("capacitors/delete/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteCapacitor(@PathVariable("id") Long id) {
@@ -103,8 +103,9 @@ public class CapacitorController {
         return "params-capacitor";
 
     }
-    //----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
     @GetMapping("/fetch/capacitor/{id}")
+    @ResponseBody
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<CapacitorParamsResponseModel> showParams(@PathVariable("id") Long id) {
         CapacitorServiceModel capacitorSM = this.capacitorService.findCapacitorById(id);
@@ -153,7 +154,7 @@ public class CapacitorController {
 
         return "add-capacitor";
     }
-
+//----------------------------------------------------------------------------------------------------------------------
     @PostMapping("/capacitors/add")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String addCapacitorConfirm(@Valid @ModelAttribute("capacitorBindingModel") CapacitorBindingModel capacitorBindingModel,
@@ -176,7 +177,7 @@ public class CapacitorController {
 
 
     }
-
+//----------------------------------------------------------------------------------------------------------------------
 }
 
 

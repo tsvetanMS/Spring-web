@@ -1,11 +1,13 @@
 package softuni.emuseum.init;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import softuni.emuseum.entities.Capacitor;
 import softuni.emuseum.entities.Diode;
 import softuni.emuseum.entities.Resistor;
 import softuni.emuseum.entities.Transistor;
+import softuni.emuseum.models.service.CapacitorServiceModel;
 import softuni.emuseum.services.api.CapacitorService;
 import softuni.emuseum.services.api.DiodeService;
 import softuni.emuseum.services.api.ResistorService;
@@ -18,12 +20,14 @@ public class DataInitializer implements CommandLineRunner{
     private final ResistorService resistorService;
     private final CapacitorService capacitorService;
     private final DiodeService diodeService;
+    private final ModelMapper modelMapper;
 
-    public DataInitializer(TransistorService transistorService, ResistorService resistorService, CapacitorService capacitorService, DiodeService diodeService) {
+    public DataInitializer(TransistorService transistorService, ResistorService resistorService, CapacitorService capacitorService, DiodeService diodeService, ModelMapper modelMapper) {
         this.transistorService = transistorService;
         this.resistorService = resistorService;
         this.capacitorService = capacitorService;
         this.diodeService = diodeService;
+        this.modelMapper = modelMapper;
     }
 
 
@@ -75,11 +79,11 @@ public class DataInitializer implements CommandLineRunner{
         this.resistorService.loadResistorInDatabase(resistorFour);
         this.resistorService.loadResistorInDatabase(resistorFive);
 
-        this.capacitorService.loadCapacitorInDatabase(capacitorOne);
-        this.capacitorService.loadCapacitorInDatabase(capacitorTwo);
-        this.capacitorService.loadCapacitorInDatabase(capacitorThree);
-        this.capacitorService.loadCapacitorInDatabase(capacitorFour);
-        this.capacitorService.loadCapacitorInDatabase(capacitorFive);
+        this.capacitorService.loadCapacitorInDatabase(this.modelMapper.map(capacitorOne, CapacitorServiceModel.class));
+        this.capacitorService.loadCapacitorInDatabase(this.modelMapper.map(capacitorTwo, CapacitorServiceModel.class));
+        this.capacitorService.loadCapacitorInDatabase(this.modelMapper.map(capacitorThree, CapacitorServiceModel.class));
+        this.capacitorService.loadCapacitorInDatabase(this.modelMapper.map(capacitorFour, CapacitorServiceModel.class));
+        this.capacitorService.loadCapacitorInDatabase(this.modelMapper.map(capacitorFive, CapacitorServiceModel.class));
 
         this.diodeService.loadDiodeInDatabase(diodeOne);
         this.diodeService.loadDiodeInDatabase(diodeTwo);

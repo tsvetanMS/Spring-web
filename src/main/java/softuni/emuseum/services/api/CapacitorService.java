@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface CapacitorService {
 
-    void loadCapacitorInDatabase(Capacitor capacitor);
+    void loadCapacitorInDatabase(CapacitorServiceModel capacitorSM);
 
     List<CapacitorServiceModel> findAllCapacitors();
 

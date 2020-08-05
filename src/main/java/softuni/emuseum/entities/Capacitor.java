@@ -25,7 +25,7 @@ public class Capacitor extends BaseEntity{
         this.maxVoltage = maxVoltage;
     }
 //----------------------------------------------------------------------------------------------------------------------
-    @Column(name="picture_id", length = 33)
+    @Column(name="picture_id", length = 33, nullable = false)
     public String getPictureID() {
         return pictureID;
     }

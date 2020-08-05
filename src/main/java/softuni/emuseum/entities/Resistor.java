@@ -28,7 +28,7 @@ public class Resistor extends BaseEntity {
         this.precision = precision;
     }
 //----------------------------------------------------------------------------------------------------------------------
-    @Column(name="picture_id", length = 33)
+    @Column(name="picture_id", length = 33, nullable = false)
     public String getPictureID() {
         return pictureID;
     }
