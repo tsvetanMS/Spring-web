@@ -71,20 +71,20 @@ public class CapacitorControllerTests {
     @WithMockUser(username = "admin",roles = {"USER","ADMIN"})
     public void fetchAllCapacitorsTest() throws Exception {
 
-        User user = new User();
-        Role role = new Role();
-
-        role.setAuthority("ROLE_ADMIN");
-        roleRepository.saveAndFlush(role);
-
-        Set<Role> authorities = new HashSet<>();
-        user.setAuthorities(authorities);
-        user.getAuthorities().add(role);
-        user.setUsername("admin");
-        user.setEmail("mail@mail.bg");
-        user.setPassword("123");
-
-        userRepository.saveAndFlush(user);
+//        User user = new User();
+//        Role role = new Role();
+//
+//        role.setAuthority("ROLE_ADMIN");
+//        roleRepository.saveAndFlush(role);
+//
+//        Set<Role> authorities = new HashSet<>();
+//        user.setAuthorities(authorities);
+//        user.getAuthorities().add(role);
+//        user.setUsername("admin");
+//        user.setEmail("mail@mail.bg");
+//        user.setPassword("123");
+//
+//        userRepository.saveAndFlush(user);
 
 
         this.mockMvc.perform(get("/fetch/capacitors"))
