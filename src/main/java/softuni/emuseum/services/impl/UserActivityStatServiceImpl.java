@@ -54,7 +54,7 @@ public class UserActivityStatServiceImpl implements UserActivityStatService {
     public List<UserActivityServiceModel> findAllUsersActivity() {
         List<UserActivity> userActivities = this.userActivityRepository.findAll();
 
-        if(userActivities == null){
+        if(userActivities.size() == 0){
             throw new UserActivityStatNotFoundException("User activity database is empty!");
         } else {
            return userActivities.stream().map(userActivity -> this.modelMapper.map(userActivity, UserActivityServiceModel.class))

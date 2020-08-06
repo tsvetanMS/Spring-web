@@ -29,10 +29,10 @@ public class CapacitorServiceTests {
     private ModelMapper modelMapper;
     private CapacitorService capacitorService;
 
-    private static Capacitor capacitorFirst;
+    private Capacitor capacitorFirst;
     private Capacitor capacitorSecond;
     private CapacitorServiceModel capacitorFirstSM;
-    private static CapacitorServiceModel capacitorSecondSM;
+    private CapacitorServiceModel capacitorSecondSM;
 
     @Before
     public void init(){
@@ -51,7 +51,6 @@ public class CapacitorServiceTests {
     public void loadCapacitorInDatabaseWithCorrectDataTest(){
 
         capacitorService.loadCapacitorInDatabase(capacitorFirstSM);
-        capacitorService.loadCapacitorInDatabase(capacitorSecondSM);
 
         Capacitor expected = this.capacitorRepository.findAll().get(0);
         int expectedSize = 1;

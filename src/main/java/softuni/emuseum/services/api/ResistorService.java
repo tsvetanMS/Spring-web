@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ResistorService {
 
-    void loadResistorInDatabase(Resistor resistor);
+    void loadResistorInDatabase(ResistorServiceModel resistorSM);
 
     List<ResistorServiceModel> findAllResistors();
 

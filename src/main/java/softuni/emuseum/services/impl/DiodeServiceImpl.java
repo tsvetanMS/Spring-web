@@ -28,9 +28,9 @@ public class DiodeServiceImpl implements DiodeService {
 
 
     @Override
-    public void loadDiodeInDatabase(Diode diode) {
+    public void loadDiodeInDatabase(DiodeServiceModel diodeSM) {
         if(this.diodeRepository.count() == 0) {
-            this.diodeRepository.save(diode);
+            this.diodeRepository.save(this.modelMapper.map(diodeSM, Diode.class));
         }
     }
 

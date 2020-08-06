@@ -8,6 +8,9 @@ import softuni.emuseum.entities.Diode;
 import softuni.emuseum.entities.Resistor;
 import softuni.emuseum.entities.Transistor;
 import softuni.emuseum.models.service.CapacitorServiceModel;
+import softuni.emuseum.models.service.DiodeServiceModel;
+import softuni.emuseum.models.service.ResistorServiceModel;
+import softuni.emuseum.models.service.TransistorServiceModel;
 import softuni.emuseum.services.api.CapacitorService;
 import softuni.emuseum.services.api.DiodeService;
 import softuni.emuseum.services.api.ResistorService;
@@ -67,17 +70,18 @@ public class DataInitializer implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
 
-        this.transistorService.loadTransistorInDatabase(transistorOne);
-        this.transistorService.loadTransistorInDatabase(transistorTwo);
-        this.transistorService.loadTransistorInDatabase(transistorThree);
-        this.transistorService.loadTransistorInDatabase(transistorFour);
-        this.transistorService.loadTransistorInDatabase(transistorFive);
+        this.transistorService.loadTransistorInDatabase(this.modelMapper.map(transistorOne, TransistorServiceModel.class));
+        this.transistorService.loadTransistorInDatabase(this.modelMapper.map(transistorTwo, TransistorServiceModel.class));
+        this.transistorService.loadTransistorInDatabase(this.modelMapper.map(transistorThree, TransistorServiceModel.class));
+        this.transistorService.loadTransistorInDatabase(this.modelMapper.map(transistorFour, TransistorServiceModel.class));
+        this.transistorService.loadTransistorInDatabase(this.modelMapper.map(transistorFive, TransistorServiceModel.class));
 
-        this.resistorService.loadResistorInDatabase(resistorOne);
-        this.resistorService.loadResistorInDatabase(resistorTwo);
-        this.resistorService.loadResistorInDatabase(resistorThree);
-        this.resistorService.loadResistorInDatabase(resistorFour);
-        this.resistorService.loadResistorInDatabase(resistorFive);
+        this.resistorService.loadResistorInDatabase(this.modelMapper.map(resistorOne, ResistorServiceModel.class));
+        this.resistorService.loadResistorInDatabase(this.modelMapper.map(resistorTwo, ResistorServiceModel.class));
+        this.resistorService.loadResistorInDatabase(this.modelMapper.map(resistorThree, ResistorServiceModel.class));
+        this.resistorService.loadResistorInDatabase(this.modelMapper.map(resistorFour, ResistorServiceModel.class));
+        this.resistorService.loadResistorInDatabase(this.modelMapper.map(resistorFive, ResistorServiceModel.class));
+
 
         this.capacitorService.loadCapacitorInDatabase(this.modelMapper.map(capacitorOne, CapacitorServiceModel.class));
         this.capacitorService.loadCapacitorInDatabase(this.modelMapper.map(capacitorTwo, CapacitorServiceModel.class));
@@ -85,13 +89,11 @@ public class DataInitializer implements CommandLineRunner{
         this.capacitorService.loadCapacitorInDatabase(this.modelMapper.map(capacitorFour, CapacitorServiceModel.class));
         this.capacitorService.loadCapacitorInDatabase(this.modelMapper.map(capacitorFive, CapacitorServiceModel.class));
 
-        this.diodeService.loadDiodeInDatabase(diodeOne);
-        this.diodeService.loadDiodeInDatabase(diodeTwo);
-        this.diodeService.loadDiodeInDatabase(diodeThree);
-        this.diodeService.loadDiodeInDatabase(diodeFour);
-        this.diodeService.loadDiodeInDatabase(diodeFive);
-
-
+        this.diodeService.loadDiodeInDatabase(this.modelMapper.map(diodeOne, DiodeServiceModel.class));
+        this.diodeService.loadDiodeInDatabase(this.modelMapper.map(diodeTwo, DiodeServiceModel.class));
+        this.diodeService.loadDiodeInDatabase(this.modelMapper.map(diodeThree, DiodeServiceModel.class));
+        this.diodeService.loadDiodeInDatabase(this.modelMapper.map(diodeFour, DiodeServiceModel.class));
+        this.diodeService.loadDiodeInDatabase(this.modelMapper.map(diodeFive, DiodeServiceModel.class));
 
     }
 }

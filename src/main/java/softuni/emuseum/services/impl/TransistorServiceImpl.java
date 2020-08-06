@@ -24,9 +24,9 @@ public class TransistorServiceImpl implements TransistorService {
 
 //----------------------------------------------------------------------------------------------------------------------
     @Override
-    public void loadTransistorInDatabase(Transistor transistor) {
+    public void loadTransistorInDatabase(TransistorServiceModel transistorSM) {
         if(this.transistorRepository.count() == 0) {
-            this.transistorRepository.save(transistor);
+            this.transistorRepository.save(this.modelMapper.map(transistorSM, Transistor.class));
         }
 
     }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TransistorService {
 
-    void loadTransistorInDatabase(Transistor transistor);
+    void loadTransistorInDatabase(TransistorServiceModel transistorSM);
 
     List<TransistorServiceModel> findAllTransistors();
 

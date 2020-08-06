@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface DiodeService {
 
-    void loadDiodeInDatabase(Diode diode);
+    void loadDiodeInDatabase(DiodeServiceModel diodeSM);
 
     List<DiodeServiceModel> findAllDiodes();
 
