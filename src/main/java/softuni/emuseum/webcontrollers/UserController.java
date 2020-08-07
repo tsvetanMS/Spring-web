@@ -85,29 +85,6 @@ public class UserController {
     }
 //----------------------------------------------------------------------------------------------------------------------
 
-    @GetMapping("/index")
-    public String index() {
-        return "home";
-    }
-
-    @GetMapping("/")
-    public String indexSlash() {
-        return "home";
-    }
-
-    @GetMapping("/home")
-    public String home() {
-        return "home";
-    }
-//----------------------------------------------------------------------------------------------------------------------
-
-    @GetMapping("/about")
-    public String about() {
-
-        return "about";
-    }
-//----------------------------------------------------------------------------------------------------------------------
-
     @GetMapping("/users/login")
     @PreAuthorize("isAnonymous()")
     public String login() {
@@ -149,25 +126,26 @@ public class UserController {
         return "redirect:/index";
     }
 //----------------------------------------------------------------------------------------------------------------------
-@GetMapping("/users/all")
-public String users() {
+    // това е за UsersStat
+    @GetMapping("/users/all")
+    public String users() {
 
-    return "users";
-}
+        return "users";
+    }
 
     @GetMapping("/fetch/users")
     @ResponseBody
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<List<UserResponseModel>> getAllUsers() {
+    public ResponseEntity<List<UserResponseModel>> getAllUsersForUsersStat() {
 
         List<UserActivityServiceModel> users = userActivityStatService.findAllUsersActivity();
         List<UserResponseModel> result = new ArrayList<>();
 
-        users.forEach(user -> {
+        users.forEach(userActivitySM -> {
             UserResponseModel userRM = new UserResponseModel();
-            userRM.setUsername(user.getUsername());
-            userRM.setRoute(user.getRoute());
-            userRM.setDateTime(user.getDateTime().toString());
+            userRM.setUsername(userActivitySM.getUsername());
+            userRM.setRoute(userActivitySM.getRoute());
+            userRM.setDateTime(userActivitySM.getDateTime().toString());
             result.add(userRM);
         });
 

@@ -36,7 +36,9 @@ public class UserServiceImpl implements UserService {
 
 
 
-
+//----------------------------------------------------------------------------------------------------------------------
+    // това сме го добавили заради Security-то
+    // написах тест за него, но не се получава
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return this.userRepository.findByUsername(username)

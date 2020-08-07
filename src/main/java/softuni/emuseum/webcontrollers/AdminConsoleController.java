@@ -25,7 +25,7 @@ public class AdminConsoleController {
         this.pageStatService = pageStatService;
     }
 
-
+//----------------------------------------------------------------------------------------------------------------------
     @GetMapping("/admin")
     public String admin(){
         return "admin-console";

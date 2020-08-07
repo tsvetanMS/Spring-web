@@ -27,6 +27,7 @@ public class RoleServiceImpl implements RoleService {
 
     }
 
+//----------------------------------------------------------------------------------------------------------------------
     @Override
     public void seedRolesInDatabase() {
         if (roleRepository.count() == 0){
@@ -37,7 +38,6 @@ public class RoleServiceImpl implements RoleService {
         }
     }
 
-
 //----------------------------------------------------------------------------------------------------------------------
     @Override
     public Set<RoleServiceModel> findAllAuthorities() {
@@ -46,7 +46,7 @@ public class RoleServiceImpl implements RoleService {
                 .map(role -> this.modelMapper.map(role, RoleServiceModel.class))
                 .collect(Collectors.toSet());
     }
-
+//----------------------------------------------------------------------------------------------------------------------
     @Override
     public RoleServiceModel findByAuthority(String roleName) {
 
@@ -56,5 +56,5 @@ public class RoleServiceImpl implements RoleService {
     }
 //----------------------------------------------------------------------------------------------------------------------
 
-//----------------------------------------------------------------------------------------------------------------------
+
 }
