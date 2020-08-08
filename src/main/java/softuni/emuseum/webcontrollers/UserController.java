@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import softuni.emuseum.entities.Role;
 import softuni.emuseum.entities.User;
+import softuni.emuseum.errorhandling.errors.UserAllReadyExistException;
 import softuni.emuseum.models.binding.UserRegisterBindingModel;
 import softuni.emuseum.models.responce.PageStatResponseModel;
 import softuni.emuseum.models.responce.UserEditResponseModel;
@@ -48,6 +49,7 @@ public class UserController {
 
 //----------------------------------------------------------------------------------------------------------------------
     @GetMapping("/users/edit")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String edit() {
 
         return "all-users";
@@ -119,8 +121,19 @@ public class UserController {
             return "redirect:/users/register";
 
         } else {
+
             UserServiceModel userSM = this.modelMapper.map(userRegisterBindingModel, UserServiceModel.class);
-            this.userService.registerUser(userSM);
+
+            List<UserServiceModel> users = this.userService.findAllUsers();
+            for (var user : users) {
+                if(user.getUsername().equals(userSM.getUsername())){
+                    throw new UserAllReadyExistException("User with such username all ready exist!");
+                }
+            }
+
+                this.userService.registerUser(userSM);
+
+
         }
 
         return "redirect:/index";
@@ -128,6 +141,7 @@ public class UserController {
 //----------------------------------------------------------------------------------------------------------------------
     // това е за UsersStat
     @GetMapping("/users/all")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String users() {
 
         return "users";

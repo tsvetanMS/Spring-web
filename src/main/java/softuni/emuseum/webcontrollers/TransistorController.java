@@ -38,10 +38,10 @@ public class TransistorController {
 
     }
 
-    //----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
     @GetMapping("/all-transistors")
     @PreAuthorize("isAuthenticated()")
-    public String getAllTransistros() {
+    public String getAllTransistors() {
 
         return "all-transistors";
     }
@@ -71,7 +71,7 @@ public class TransistorController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    //----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
     @GetMapping("transistors/delete/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteTransistor(@PathVariable("id") Long id) {
@@ -80,7 +80,7 @@ public class TransistorController {
         return "redirect:/all-transistors";
     }
 
-    //----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
     @GetMapping("/transistors/edit/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String edit(@PathVariable("id") Long id, Model model) {
@@ -117,7 +117,7 @@ public class TransistorController {
 //----------------------------------------------------------------------------------------------------------------------
 
         @PostMapping("/transistors/edit/{id}")
-        @PreAuthorize("isAuthenticated()")
+        @PreAuthorize("hasRole('ROLE_ADMIN')")
         public String editConfirm(@Valid @ModelAttribute("transistorBindingModel") TransistorBindingModel transistorBindingModel,
                                   BindingResult bindingResult, RedirectAttributes redirectAttributes, @PathVariable("id") Long id) {
 

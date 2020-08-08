@@ -117,7 +117,7 @@ public class DiodeController {
     }
 //----------------------------------------------------------------------------------------------------------------------
     @PostMapping("/diodes/edit/{id}")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String editConfirm(@Valid @ModelAttribute("diodeBindingModel") DiodeBindingModel diodeBindingModel,
                           BindingResult bindingResult, RedirectAttributes redirectAttributes, @PathVariable("id") Long id) {
 

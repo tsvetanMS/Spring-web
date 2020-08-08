@@ -27,12 +27,14 @@ public class AdminConsoleController {
 
 //----------------------------------------------------------------------------------------------------------------------
     @GetMapping("/admin")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String admin(){
         return "admin-console";
     }
 
 //----------------------------------------------------------------------------------------------------------------------
     @GetMapping("/pages/all")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String api() {
 
         return "pages";

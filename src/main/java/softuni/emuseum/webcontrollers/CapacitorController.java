@@ -115,7 +115,7 @@ public class CapacitorController {
     }
 //----------------------------------------------------------------------------------------------------------------------
     @PostMapping("/capacitors/edit/{id}")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String editConfirm(@Valid @ModelAttribute("capacitorBindingModel") CapacitorBindingModel capacitorBindingModel,
                           BindingResult bindingResult, RedirectAttributes redirectAttributes, @PathVariable("id") Long id) {
 

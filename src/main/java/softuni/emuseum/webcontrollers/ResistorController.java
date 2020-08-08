@@ -117,7 +117,7 @@ public class ResistorController {
 //----------------------------------------------------------------------------------------------------------------------
 
     @PostMapping("/resistors/edit/{id}")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String editConfirm(@Valid @ModelAttribute("resistorBindingModel") ResistorBindingModel resistorBindingModel,
                               BindingResult bindingResult, RedirectAttributes redirectAttributes, @PathVariable("id") Long id) {
 
