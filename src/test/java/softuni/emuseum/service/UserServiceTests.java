@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -63,12 +64,12 @@ public class UserServiceTests {
         user.setPassword(this.encoder.encode("123"));
         user.setId(1L);
 
-        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userRepository.findById(Mockito.any())).thenReturn(Optional.of(user));
 
         UserServiceModel actualUserSM = this.userService.findUserById(1L);
-        User expectedUser = user;
+        //User expectedUser = user;
 
-        Assert.assertEquals(expectedUser.getUsername(), actualUserSM.getUsername());
+        Assert.assertEquals(user.getUsername(), actualUserSM.getUsername());
     }
 //----------------------------------------------------------------------------------------------------------------------
 }

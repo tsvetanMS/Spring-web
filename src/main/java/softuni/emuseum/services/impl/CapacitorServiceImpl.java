@@ -28,7 +28,7 @@ public class CapacitorServiceImpl implements CapacitorService {
 
     @Override
     public void loadCapacitorInDatabase(CapacitorServiceModel capacitorSM) {
-        if(this.capacitorRepository.count() == 0) {
+        if(this.capacitorRepository.count() < 7) {
             this.capacitorRepository.save(this.modelMapper.map(capacitorSM, Capacitor.class));
         }
     }

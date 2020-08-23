@@ -25,7 +25,7 @@ public class ResistorServiceImpl implements ResistorService {
 
     @Override
     public void loadResistorInDatabase(ResistorServiceModel resistorSM) {
-        if(this.resistorRepository.count() == 0) {
+        if(this.resistorRepository.count() < 7) {
             this.resistorRepository.save(this.modelMapper.map(resistorSM, Resistor.class));
         }
     }
